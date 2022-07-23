@@ -1,6 +1,7 @@
 const display = document.querySelector(".display");
 let displayText = "";
-// display.textContent = displayText;
+
+const clear = document.querySelector(".clear");
 
 const one = document.querySelector(".one");
 const two = document.querySelector(".two");
@@ -13,9 +14,19 @@ const eight = document.querySelector(".eight");
 const nine = document.querySelector(".nine");
 const zero = document.querySelector(".zero");
 
+/**
+ * Adds a number to the display
+ * @param {string} num The number to add to the display
+ */
 function addNumber(num) {
+    // Cap the length at 15
     if (displayText.length < 15) {
-        displayText += num;
+        // If display is 0, erase the display
+        if (displayText === "0") {
+            displayText = num;
+        } else {
+            displayText += num;
+        }
         display.textContent = displayText;
     }
 }
@@ -59,6 +70,12 @@ nine.addEventListener("click", () => {
 zero.addEventListener("click", () => {
     addNumber("0");
 });
+
+// Set display to "0" when clear is clicked
+clear.addEventListener("click", () => {
+    displayText = "0";
+    display.textContent = displayText;
+})
 
 function add(a, b) {
     return a + b;
