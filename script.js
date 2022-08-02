@@ -1,5 +1,6 @@
 const display = document.querySelector(".display");
 let displayText = "";
+const DISPLAY_LIMIT = 15;
 
 const clear = document.querySelector(".clear");
 
@@ -14,16 +15,29 @@ const eight = document.querySelector(".eight");
 const nine = document.querySelector(".nine");
 const zero = document.querySelector(".zero");
 
+const addBtn = document.querySelector(".add");
+const subtractBtn = document.querySelector(".subtract");
+const multiplyBtn = document.querySelector(".multiply");
+const divideBtn = document.querySelector(".divide");
+let firstNumber = 0;
+let operator = "";
+let secondNumber = 0;
+let clearDisplay = false; // True when an operator is clicked
+let equalsClicked = false; // True when equals is clicked so that the user can't click equals multiple times
+
+const equals = document.querySelector(".equals");
+
 /**
  * Adds a number to the display
  * @param {string} num The number to add to the display
  */
 function addNumber(num) {
     // Cap the length at 15
-    if (displayText.length < 15) {
+    if (displayText.length < DISPLAY_LIMIT) {
         // If display is 0, erase the display
-        if (displayText === "0") {
+        if (displayText === "0" || clearDisplay === true) {
             displayText = num;
+            clearDisplay = false;
         } else {
             displayText += num;
         }
@@ -75,7 +89,50 @@ zero.addEventListener("click", () => {
 clear.addEventListener("click", () => {
     displayText = "0";
     display.textContent = displayText;
-})
+});
+
+addBtn.addEventListener("click", () => {
+    firstNumber = Number(displayText);
+    operator = "+";
+    clearDisplay = true;
+    equalsClicked = false;
+});
+
+subtractBtn.addEventListener("click", () => {
+    firstNumber = Number(displayText);
+    operator = "-";
+    clearDisplay = true;
+    equalsClicked = false;
+});
+
+multiplyBtn.addEventListener("click", () => {
+    firstNumber = Number(displayText);
+    operator = "*";
+    clearDisplay = true;
+    equalsClicked = false;
+});
+
+divideBtn.addEventListener("click", () => {
+    firstNumber = Number(displayText);
+    operator = "/";
+    clearDisplay = true;
+    equalsClicked = false;
+});
+
+equals.addEventListener("click", () => {
+    if (!equalsClicked) {
+        secondNumber = Number(displayText);
+        let result = operate(operator, firstNumber, secondNumber);
+        
+        displayText = result + "";
+        display.textContent = displayText;
+    
+        equalsClicked = true;
+        clearDisplay = true;
+    
+        // console.log("FirstNumber = " + firstNumber + ", Operator = " + operator + ", SecondNumber = " + secondNumber);
+    }
+});
 
 function add(a, b) {
     return a + b;
