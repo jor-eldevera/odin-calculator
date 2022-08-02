@@ -48,6 +48,10 @@ footer {
     border-radius: 2px;
 }
 
+.clear:active {
+    background-color: #F9CA9F;
+}
+
 .buttons-bottom {
     display: flex;
 }
@@ -58,10 +62,18 @@ footer {
     border-radius: 2px;
 }
 
+.digit:active {
+    background-color: #A7AEB4;
+}
+
 .operator {
     background-color: #F39237;
     border: none;
     border-radius: 2px;
+}
+
+.operator:active {
+    background-color: #F9CA9F;
 }
 
 /* Decimal and equals button */
@@ -69,6 +81,10 @@ footer {
     background-color: #6BAA75;
     border: none;
     border-radius: 2px;
+}
+
+.deceq:active {
+    background-color: #B1D2B7;
 }
 
 .digits {
