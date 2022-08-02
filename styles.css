@@ -1,36 +1,74 @@
-footer {
-    position: absolute;
-    bottom: 0;
+body {
+    background-color: #191923;
+    height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+html {
+    height: 100%;
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    color: #FBFEF9;
 }
 
 .main {
     display: flex;
     align-items: center;
     justify-content: center;
+    background-color: #191923;
 }
 
 .calculator-container {
-    background-color: lightgray;
+    background-color: #FBFEF9;
     display: flex;
     flex-direction: column;
+    border-radius: 2.5px;
+    border: 5px solid #44445F;
 }
 
 .display {
     align-self: flex-end;
+    padding: 2px;
+}
+
+.buttons-top {
+    display: flex;
+    justify-content: center;
+}
+
+.clear {
+    margin: 2px;
+    background-color: #F39237;
+    border: none;
+    border-radius: 2px;
 }
 
 .buttons-bottom {
     display: flex;
 }
 
-.operators {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    
+.digit {
+    background-color: #69747C;
+    border: none;
+    border-radius: 2px;
+}
+
+.operator {
+    background-color: #F39237;
+    border: none;
+    border-radius: 2px;
+}
+
+/* Decimal and equals button */
+.deceq {
+    background-color: #6BAA75;
+    border: none;
+    border-radius: 2px;
 }
 
 .digits {
